@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
-namespace TransactionProcessingService.API.UnitTests.Tests
+namespace TransactionProcessingService.Service.UnitTests.Tests
 {
     [TestFixture]
     public class DirectDebitsServiceTests
@@ -36,9 +36,9 @@ namespace TransactionProcessingService.API.UnitTests.Tests
             IsAccountLevelCredit = true,
             IsDisbursementLink = false,
             IsAdhoc = true,
-            TrnTypesIncluded = "yes"           
+            TrnTypesIncluded = "yes"
         };
-        private readonly DirectEntryTransaction _tranDetails = new DirectEntryTransaction        
+        private readonly DirectEntryTransaction _tranDetails = new DirectEntryTransaction
         {
             AccountID = 23,
             CompanyID = 1234,
@@ -48,7 +48,7 @@ namespace TransactionProcessingService.API.UnitTests.Tests
             CustomerID = 45678,
             Amount = 56,
             CustRef = "CUST-123",
-            Receipt = "REC-123"       
+            Receipt = "REC-123"
 
         };
 

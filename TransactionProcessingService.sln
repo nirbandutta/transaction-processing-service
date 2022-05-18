@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionProcessingServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionProcessingService.DataLayer", "src\DEBankProcessService.DataLayer\TransactionProcessingService.DataLayer.csproj", "{E7D3B911-4A41-4DE8-8655-A49DCDB857CE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionProcessingService.Service.UnitTests", "tests\TransactionProcessingService.Service.UnitTests\TransactionProcessingService.Service.UnitTests.csproj", "{123EFA97-2049-4EB5-A978-E2C97BFF5A99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{E7D3B911-4A41-4DE8-8655-A49DCDB857CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7D3B911-4A41-4DE8-8655-A49DCDB857CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7D3B911-4A41-4DE8-8655-A49DCDB857CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{123EFA97-2049-4EB5-A978-E2C97BFF5A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{123EFA97-2049-4EB5-A978-E2C97BFF5A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{123EFA97-2049-4EB5-A978-E2C97BFF5A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{123EFA97-2049-4EB5-A978-E2C97BFF5A99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{3D7713D7-04B1-4FC4-A085-C0315356217D} = {A47E6FAC-BE15-4683-A59C-017058B3F3B1}
 		{9B7755FD-6383-4623-937A-57F1CDC8CECC} = {00AE39A4-C1A9-467D-9E01-C8D829179F22}
 		{E7D3B911-4A41-4DE8-8655-A49DCDB857CE} = {A47E6FAC-BE15-4683-A59C-017058B3F3B1}
+		{123EFA97-2049-4EB5-A978-E2C97BFF5A99} = {00AE39A4-C1A9-467D-9E01-C8D829179F22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FCCF39CF-06AF-4B7A-BFBB-B7FCA93018B0}
