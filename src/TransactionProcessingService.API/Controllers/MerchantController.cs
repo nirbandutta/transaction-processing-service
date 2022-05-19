@@ -4,22 +4,23 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using TransactionProcessingService.Service.Contracts;
 using TransactionProcessingService.Service.Models;
+using TransactionProcessingService.Service.Models.Response;
 
 namespace TransactionProcessingService.API.Controllers
 {
     [ApiController]
     [Route("merchant-management")]
     [Produces("application/json")]
-    public class MerchantController : BaseController<TransactionController>
+    public class MerchantController : BaseController<MerchantController>
     {
         private readonly IMerchantService _merchantService;
 
-        public MerchantController(ILogger<TransactionController> logger, IMerchantService merchantService) : base(logger)
+        public MerchantController(ILogger<MerchantController> logger, IMerchantService merchantService) : base(logger)
         {
             _merchantService = merchantService;
         }
 
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetAllMerchantsResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -38,22 +39,33 @@ namespace TransactionProcessingService.API.Controllers
         [HttpPost("merchants")]
         public async Task<IActionResult> AddMerchant(Merchant merchant)
         {
-            var merchants = await _merchantService.GetAllMerchants();
+            var merchantAdded = await _merchantService.AddMerchant(merchant);
 
-            return Ok();
+            if(merchantAdded)
+            {
+                return CreatedAtAction("MerchantCreated", merchant);
+            }
+
+            return Problem("Merchant creation failed. Try again later!");
         }
 
 
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetMerchantResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("merchants/{id}")]
         public async Task<IActionResult> GetMerchantById(int id)
         {
-            var merchants = await _merchantService.GetAllMerchants();
+            var merchant = await _merchantService.GetMerchantById(id);
 
-            return Ok(new Merchant());
+            if (merchant == null)
+            {
+                return NotFound("Merchant not found");
+            }
+            var response = new GetMerchantResponse() { Merchant = merchant };
+
+            return Ok(response);
         }
 
 

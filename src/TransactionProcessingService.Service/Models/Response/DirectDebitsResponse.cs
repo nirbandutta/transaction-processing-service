@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace TransactionProcessingService.Service.Models.Response
 {
+
     public class DirectDebitsResponse 
     {
         public DirectDebitsResponse()

@@ -1,0 +1,185 @@
+openapi: 3.0.1
+info:
+  title: Transaction Processing API
+  version: v1
+paths:
+  /HealthCheck:
+    get:
+      tags:
+        - HealthCheck
+      responses:
+        '200':
+          description: Success
+  /merchant-management/merchants:
+    get:
+      tags:
+        - Merchant
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllMerchantsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Server Error
+    post:
+      tags:
+        - Merchant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Merchant'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Merchant'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Merchant'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Server Error
+  '/merchant-management/merchants/{id}':
+    get:
+      tags:
+        - Merchant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMerchantResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Server Error
+  /Transaction/direct-debits:
+    get:
+      tags:
+        - Transaction
+      parameters:
+        - name: BankName
+          in: query
+          required: true
+          schema:
+            maxLength: 4
+            minLength: 3
+            type: string
+        - name: DateToProcess
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Server Error
+components:
+  schemas:
+    GetAllMerchantsResponse:
+      type: object
+      properties:
+        merchants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Merchant'
+          nullable: true
+      additionalProperties: false
+    GetMerchantResponse:
+      type: object
+      properties:
+        merchant:
+          $ref: '#/components/schemas/Merchant'
+      additionalProperties: false
+    Merchant:
+      type: object
+      properties:
+        merchantId:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        externalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: { }
