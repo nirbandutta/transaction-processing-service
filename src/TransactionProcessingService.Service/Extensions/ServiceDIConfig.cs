@@ -12,6 +12,7 @@ namespace TransactionProcessingService.Service.Extensions
         public static void RegisterServices(this IServiceCollection services, string crmConnectionString, string trnConnectionString)
         {
             services.AddScoped<IDirectDebitsService, DirectDebitsService>();
+            services.AddScoped<IMerchantService, MerchantService>();
             services.AddSingleton(new MapperConfiguration(cfg => cfg.ConfigureServiceModelsMapping()).CreateMapper());
             services.AddScoped<ICommonService, CommonService>();
             services.AddDataAccessServices(crmConnectionString, trnConnectionString);

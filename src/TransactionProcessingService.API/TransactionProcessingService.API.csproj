@@ -15,7 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DEBankProcessService.Service\TransactionProcessingService.Service.csproj" />
+    <Folder Include="ApiContract\v1\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TransactionProcessingService.Service\TransactionProcessingService.Service.csproj" />
   </ItemGroup>
 
 

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DEBankProcessService.DataLayer\TransactionProcessingService.DataLayer.csproj" />
+    <ProjectReference Include="..\TransactionProcessingService.DataLayer\TransactionProcessingService.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

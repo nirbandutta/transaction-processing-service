@@ -6,6 +6,7 @@ using TransactionProcessingService.DataLayer.Contracts;
 
 namespace TransactionProcessingService.DataLayer.Repositories
 {
+
     public class AccountListRepository : IAccountListRepository
     {
         private readonly IDbConnection _dbConnection;

@@ -21,8 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DEBankProcessService.API\TransactionProcessingService.API.csproj" />
-    <ProjectReference Include="..\..\src\DEBankProcessService.Service\TransactionProcessingService.Service.csproj" />
+    <ProjectReference Include="..\..\src\TransactionProcessingService.Service\TransactionProcessingService.Service.csproj" />
   </ItemGroup>
 
 </Project>

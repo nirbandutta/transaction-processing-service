@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace TransactionProcessingService.API
 {
@@ -22,7 +23,12 @@ namespace TransactionProcessingService.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Transaction Processing API", Version = "v1" });
+            });
+
+
             services.RegisterServices(Configuration.GetConnectionString("IPP_CRM"), Configuration.GetConnectionString("IPP_TRN"));
         }
 
@@ -37,7 +43,7 @@ namespace TransactionProcessingService.API
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.InjectStylesheet("/swagger-ui/custom.css");
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DE Bank Process API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transaction Processing API v1");
             });
 
 
