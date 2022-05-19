@@ -119,6 +119,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectDebitsResponse'
         '400':
           description: Bad Request
           content:
@@ -135,6 +139,194 @@ paths:
           description: Server Error
 components:
   schemas:
+    DirectDebitsResponse:
+      type: object
+      properties:
+        directEntryAccounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectEntryAccountModel'
+          nullable: true
+      additionalProperties: false
+    DirectEntryAccountModel:
+      type: object
+      properties:
+        accountId:
+          type: integer
+          format: int64
+        companyId:
+          type: integer
+          format: int64
+        generateByCompanyId:
+          type: boolean
+        isBankInfoFromTrn:
+          type: boolean
+        isAccountLevelCredit:
+          type: boolean
+        isDisbursementLink:
+          type: boolean
+        isAdhoc:
+          type: boolean
+        trnTypesIncluded:
+          type: string
+          nullable: true
+        isAggregatedAccountModule:
+          type: boolean
+        isIncludeCC:
+          type: boolean
+        isAutoPayments:
+          type: boolean
+        isWithBalancingRecord:
+          type: boolean
+        fromAccountId:
+          type: integer
+          format: int32
+        amountCalculationType:
+          type: integer
+          format: int32
+        templateTypeId:
+          type: integer
+          format: int32
+        debitBankName:
+          type: string
+          nullable: true
+        debitBankAssignedNumber:
+          type: string
+          nullable: true
+        debitBankAssignedName:
+          type: string
+          nullable: true
+        debitAccTitle:
+          type: string
+          nullable: true
+        debitAccRouting:
+          type: string
+          nullable: true
+        debitAccNo:
+          type: string
+          nullable: true
+        debitRemitter:
+          type: string
+          nullable: true
+        debitEntryDescriptor:
+          type: string
+          nullable: true
+        debitLodgementRef:
+          type: string
+          nullable: true
+        settlementTime:
+          type: string
+          nullable: true
+        creditBankName:
+          type: string
+          nullable: true
+        creditBankAssignedNumber:
+          type: string
+          nullable: true
+        creditBankAssignedName:
+          type: string
+          nullable: true
+        creditAccTitle:
+          type: string
+          nullable: true
+        creditAccRouting:
+          type: string
+          nullable: true
+        creditAccNo:
+          type: string
+          nullable: true
+        creditRemitter:
+          type: string
+          nullable: true
+        creditEntryDescriptor:
+          type: string
+          nullable: true
+        creditLodgementRef:
+          type: string
+          nullable: true
+        runNumber:
+          type: integer
+          format: int32
+        directEntryTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectEntryTransactionModel'
+          nullable: true
+      additionalProperties: false
+    DirectEntryTransactionModel:
+      type: object
+      properties:
+        cleanSpecialCharsOnAccTitle:
+          type: boolean
+        templateTypeId:
+          type: integer
+          format: int32
+        trnId:
+          type: integer
+          format: int64
+        trnType:
+          type: integer
+          format: int32
+        accountId:
+          type: integer
+          format: int64
+        companyId:
+          type: integer
+          format: int64
+        customerId:
+          type: integer
+          format: int64
+        customerNumber:
+          type: string
+          nullable: true
+        amount:
+          type: integer
+          format: int64
+        surcharge:
+          type: integer
+          format: int64
+        custRef:
+          type: string
+          nullable: true
+        receipt:
+          type: string
+          nullable: true
+        sourceAccRouting:
+          type: string
+          nullable: true
+        sourceAccNo:
+          type: string
+          nullable: true
+        sourceAccTitle:
+          type: string
+          nullable: true
+        destAccRouting:
+          type: string
+          nullable: true
+        destAccNo:
+          type: string
+          nullable: true
+        destAccTitle:
+          type: string
+          nullable: true
+        aamPayment:
+          type: boolean
+        accountNumber:
+          type: string
+          nullable: true
+        settlementDate:
+          type: string
+          nullable: true
+        lodgementReference1:
+          type: string
+          nullable: true
+        lodgementReference2:
+          type: string
+          nullable: true
+        debitRemitter:
+          type: string
+          nullable: true
+      additionalProperties: false
     GetAllMerchantsResponse:
       type: object
       properties:

@@ -25,7 +25,7 @@ namespace TransactionProcessingService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("merchants")]
-        public async Task<IActionResult> GetAllMerchants()
+        public async Task<IActionResult> GetAllMerchantsAsync()
         {
             var merchants = await _merchantService.GetAllMerchants();
 
@@ -37,7 +37,7 @@ namespace TransactionProcessingService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost("merchants")]
-        public async Task<IActionResult> AddMerchant(Merchant merchant)
+        public async Task<IActionResult> AddMerchantAsync(Merchant merchant)
         {
             var merchantAdded = await _merchantService.AddMerchant(merchant);
 
@@ -55,7 +55,7 @@ namespace TransactionProcessingService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("merchants/{id}")]
-        public async Task<IActionResult> GetMerchantById(int id)
+        public async Task<IActionResult> GetMerchantByIdAsync(int id)
         {
             var merchant = await _merchantService.GetMerchantById(id);
 

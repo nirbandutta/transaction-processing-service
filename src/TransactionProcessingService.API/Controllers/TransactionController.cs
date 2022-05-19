@@ -6,6 +6,7 @@ using TransactionProcessingService.Service.Models.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using TransactionProcessingService.Service.Models.Response;
 
 namespace TransactionProcessingService.API.Controllers
 {
@@ -21,12 +22,12 @@ namespace TransactionProcessingService.API.Controllers
             _accountService = accountService;
         }
 
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(DirectDebitsResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("direct-debits")]
-        public async Task<ActionResult> ProcessGenericDirectDebitsAsync([FromQuery] DirectDebitsRequest directDebitsRequest)
+        public async Task<ActionResult> GetDirectDebitsAsync([FromQuery] DirectDebitsRequest directDebitsRequest)
         {
             Logger.LogInformation("ProcessGenericDirectDebits is called");
 
