@@ -13,4 +13,4 @@
 1. Dapper Used for Legacy DB Tables where it provides simplicity and better performance.
 2. EF Core is used for new DB tables.
 
-
+**_Note - API Authentication/Authorization is not used_**
